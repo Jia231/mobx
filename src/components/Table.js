@@ -2,13 +2,12 @@ import React from 'react';
 import Rows from './Rows';
 import {observer} from 'mobx-react';
 
-
+@observer
 class Table extends React.Component{
     constructor(props){
         super(props);
     }
     render(){
-        const appStore = this.props.store;
         return (
         <div>
             <table>
@@ -19,7 +18,7 @@ class Table extends React.Component{
                     </tr>
                 </thead>
                 <tbody>
-                    <Rows store={appStore}/>
+                    <Rows/>
                 </tbody>
             </table>
         </div>

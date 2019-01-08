@@ -1,15 +1,17 @@
 import React from 'react';
 import Table from './Table';
 import Controls from './Controls';
-import appStore from '../store/Store';
+import { observer, inject } from 'mobx-react';
 
+@inject('store')
+@observer
 class App extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
     }
-
     render(){
-        return <><Table store={appStore}/><Controls store={appStore}/></>
+        const {PersonStore} = this.props.store;
+        return <><Table store={PersonStore}/><Controls/></>
     }
 }
 

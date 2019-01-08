@@ -1,10 +1,21 @@
-import React from 'react';
+import React,{Component} from 'react';
+import {observer, inject} from 'mobx-react';
 
-const Rows = ({store})=>(store.person.map((ele,key)=><tr key={key}>
-    <td>{ele.name}</td>
-    <td>{ele.lastname}</td>
-</tr>) 
-)
+@inject('store')
+@observer
+class Rows extends Component{
+
+    render(){
+        const {store} = this.props;
+        return(
+            <>
+            {
+                store.person.map((ele,i)=><tr key={i}><td>{ele.name}</td><td>{ele.lastname}</td></tr>)
+            }
+            </>
+        )
+    }
+}
 
 
 export default Rows;
